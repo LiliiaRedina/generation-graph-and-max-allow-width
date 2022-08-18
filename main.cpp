@@ -208,7 +208,7 @@ class Graph {
             neighbours.push_back(Neighbours(num_vert - 1, i));
         }
 
-        for (int next_v = 1; next_v < num_vert; ++next_v) {
+        for (int next_v = 1; next_v <= min(num_vert - 1, num_edges); ++next_v) {
             int v = random_number() % next_v;
             neighbours[next_v].add_edge(v);
             neighbours[v].add_edge(next_v);
@@ -266,7 +266,7 @@ class Graph {
         file.open(file_name);
 
         file << id_begin << " " << id_end;
-//         file << num_vert << " " << num_edges;
+//        file << num_vert << " " << num_edges;
         for (int i = 0; i < edges.size(); ++i) {
             file << '\n';
             file << i + 1 << " :";
