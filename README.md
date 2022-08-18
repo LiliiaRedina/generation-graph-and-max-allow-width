@@ -20,3 +20,8 @@
 ...
 
 \<vertex number\> : \<its neighbor's number\>-\<edge width\> ... \<its neighbor's number\>-\<edge width\>
+
+
+## Test
+
+opt.exe -t \<id_cap 1 - 5\> \<id_zod 1 - 5\> bars.txt
