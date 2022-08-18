@@ -265,8 +265,8 @@ class Graph {
         ofstream file;
         file.open(file_name);
 
-//    file << id_begin << " " << id_end;
-        file << num_vert << " " << num_edges;
+        file << id_begin << " " << id_end;
+//         file << num_vert << " " << num_edges;
         for (int i = 0; i < edges.size(); ++i) {
             file << '\n';
             file << i + 1 << " :";
