@@ -14,7 +14,7 @@ class Graph {
     vector<vector<double>> widths;
 
     static int random_number() {
-        const int MAX_NUM = 6;
+        const int MAX_NUM = 1e6;
         std::random_device rd;
         std::mt19937 mt(rd());
         std::uniform_int_distribution<int> dist(0, MAX_NUM);
