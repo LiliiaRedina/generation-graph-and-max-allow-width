@@ -25,3 +25,5 @@
 ## Test
 
 opt.exe -t \<id_cap 1 - 5\> \<id_zod 1 - 5\> bars.txt
+
+./opt.out -t \<id_cap 1 - 5\> \<id_zod 1 - 5\> bars.txt
