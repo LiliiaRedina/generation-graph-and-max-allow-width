@@ -31,7 +31,7 @@ class Graph {
         Node(Node *left, Node *right, int value, int min, int max) :
                 left(left), right(right), value(value), min(min), max(max) {}
 
-        void add_edges_to_owner_vec(vector<int> &vec, int owner) {
+        void add_edges_to_owner_vec(vector<int> &vec, int owner) const {
             if (min + 1 == max) {
                 if (min >= owner) {
                     vec.push_back(min);
@@ -55,7 +55,7 @@ class Graph {
         Neighbours(int num_vert, int owner) : num_vert(num_vert),
                                               root(new Node(nullptr, nullptr, 0, 0, num_vert)), owner(owner) {}
 
-        void add_edge(int vert) {
+        void add_edge(int vert) const {
             if (vert < owner) {
                 _add(vert);
             } else {
@@ -63,7 +63,7 @@ class Graph {
             }
         }
 
-        void _add(int vert) {
+        void _add(int vert) const {
             Node *cur = root;
             while (cur->min < cur->max) {
                 ++cur->value;
@@ -87,7 +87,7 @@ class Graph {
             }
         }
 
-        int get_random_node() {
+        int get_random_node() const {
             int random_node_num = _get_rand();
             if (random_node_num >= owner) {
                 ++random_node_num;
@@ -95,7 +95,7 @@ class Graph {
             return random_node_num;
         }
 
-        int _get_rand() {
+        int _get_rand() const {
             if (root->value == num_vert) {
                 return -1;
             }
@@ -142,7 +142,7 @@ class Graph {
         Node *root;
         vector<int> degrees;
 
-        Degrees(int num_vert) : num_vert(num_vert),
+        explicit Degrees(int num_vert) : num_vert(num_vert),
                                 root(new Node(nullptr, nullptr, 0, 0, num_vert)) {
             degrees.resize(num_vert, 0);
         }
@@ -173,7 +173,7 @@ class Graph {
             }
         }
 
-        int get_random_node() {
+        int get_random_node() const {
             if (root->value == num_vert) {
                 return -1;
             }
@@ -203,9 +203,9 @@ class Graph {
         }
     };
 
-    void generate_tree(vector<Neighbours> &neighbours, Degrees &degrees) {
+    void generate_tree(vector<Neighbours> &neighbours, Degrees &degrees) const {
         for (int i = 0; i < num_vert; ++i) {
-            neighbours.push_back(Neighbours(num_vert - 1, i));
+            neighbours.emplace_back(num_vert - 1, i);
         }
 
         for (int next_v = 1; next_v <= min(num_vert - 1, num_edges); ++next_v) {
@@ -261,7 +261,7 @@ class Graph {
         }
     }
 
-    void write_file(string file_name) {
+    void write_file(const string& file_name) {
         ofstream file;
         file.open(file_name);
 
@@ -278,7 +278,7 @@ class Graph {
         file.close();
     }
 
-    void read_file(string file_name) {
+    void read_file(const string& file_name) {
         ifstream file;
         file.open(file_name);
 
@@ -346,8 +346,6 @@ class Graph {
     }
 
     bool find_path() {
-        int num_vert = edges.size();
-
         vector<bool> is_used(num_vert, false);
 
         dfs(is_used, id_begin);
@@ -377,7 +375,8 @@ class Graph {
     }
 
 public:
-    void fill_graph_data(string option, string argv2, string argv3, string file_name) {
+    void fill_graph_data(const string& option, const string& argv2, 
+                         const string& argv3, const string& file_name) {
         if (option == "-g") {
             num_vert = stoi(argv2);
             num_edges = stoi(argv3);
