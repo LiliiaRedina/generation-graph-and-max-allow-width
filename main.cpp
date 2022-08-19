@@ -375,7 +375,7 @@ class Graph {
     }
 
 public:
-    void fill_graph_data(const string& option, const string& argv2, 
+    void fill_graph_data(const string& option, const string& argv2,
                          const string& argv3, const string& file_name) {
         if (option == "-g") {
             num_vert = stoi(argv2);
@@ -398,7 +398,7 @@ public:
         }
     }
 
-    int find_max_allow_width() {
+    double find_max_allow_width() {
         vector<double> widths_sort;
 
         for (int i = 0; i < widths.size(); ++i) {
