@@ -5,6 +5,7 @@ The program has two modes:
 * with the -g flag and a given number of vertices and edges: generates a random connected graph with random edge capacities, writes to a file in the format below, randomly selects two vertices and finds the maximum flow between them.
 
 Asymptotic behavior of generating a random connected graph: O(m * log n)
+
 Asymptotics of finding the maximum flow: O((m + n) * log m)
 
 The essence of the algorithm for generating a random connected graph:
