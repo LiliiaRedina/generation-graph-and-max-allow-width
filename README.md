@@ -41,15 +41,10 @@ The maximum flow is found by sorting all edges by their capacity and using binar
 
 * opt.exe -t \<number of the first vertex\> \<number of the second vertex\> \<file name\>
 
-  ./opt.out -t \<number of the first vertex\> \<number of the second vertex\> \<file name\>
-
 * opt.exe -g \<number of vertices\> \<number of edges\> \<file name\>
-  ./opt.out -g \<number of vertices\> \<number of edges\> \<file name\>
-
+  
 ## Test
 
 opt.exe -t \<number of the first vertex 1 - 5\> \<number of the second vertex 1 - 5\> bars.txt
-
-./opt.out -t \<number of the first vertex 1 - 5\> \<number of the second vertex 1 - 5\> bars.txt
 
 or any generation to an existing file txt
